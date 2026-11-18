@@ -25,10 +25,15 @@ export const metadata: Metadata = {
   icons: {
     icon: [{ url: "/pomoist-app-icon.png", type: "image/png" }]
   },
+  alternates: {
+    canonical: "/"
+  },
   openGraph: {
     title: "Pomoist — focus rounds and ambient sound",
     description:
       "Pomodoro and flowmodoro timers, a mixable sound library, and an FM radio you tune by hand. Generated in the browser, stored on your device.",
+    url: "/",
+    siteName: "Pomoist",
     images: [{ url: "/pomoist-app-icon.png" }],
     type: "website"
   }

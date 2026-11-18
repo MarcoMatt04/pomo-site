@@ -15,8 +15,11 @@ import { CtaSection } from "@/components/CtaSection";
 import { Footer2 } from "@/components/footer2";
 import BubbleMenu from "@/components/ui/BubbleMenu";
 
-// shortcut: null until the built installer is published — the button hides itself
-const INSTALLER_URL: string | null = null;
+// The Windows installer, published as a release asset:
+// https://github.com/MarcoMatt04/pomo-site/releases/tag/v3.1.1
+// Keep the tag and file name in sync with the release, or the button 404s.
+const INSTALLER_URL: string | null =
+  "https://github.com/MarcoMatt04/pomo-site/releases/download/v3.1.1/Pomoist_3.1.1_x64-setup.exe";
 
 /**
  * A section that throws (a WebGL context iOS refuses, a canvas that dies
