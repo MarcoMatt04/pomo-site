@@ -15,9 +15,11 @@ import { CtaSection } from "@/components/CtaSection";
 import { Footer2 } from "@/components/footer2";
 import BubbleMenu from "@/components/ui/BubbleMenu";
 
-// The Windows installer, published as a release asset:
+// The Windows installer is published as a release asset:
 // https://github.com/MarcoMatt04/pomo-site/releases/tag/v3.1.1
-// Keep the tag and file name in sync with the release, or the button 404s.
+// It cannot live in public/ or in git: GitHub rejects repo files over 100 MB and
+// Vercel caps static uploads at 100 MB, while release assets allow 2 GB.
+// Keep the tag and asset name in sync with the release, or the button 404s.
 const INSTALLER_URL: string | null =
   "https://github.com/MarcoMatt04/pomo-site/releases/download/v3.1.1/Pomoist_3.1.1_x64-setup.exe";
 

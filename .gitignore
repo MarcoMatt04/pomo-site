@@ -50,3 +50,7 @@ next-env.d.ts
 
 # package manager caches
 .pnpm-store
+
+# the Windows installer ships from public/downloads but never from git:
+# GitHub rejects repo files over 100 MB and the exe is ~116 MB
+public/downloads/*.exe

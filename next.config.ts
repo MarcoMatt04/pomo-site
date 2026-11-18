@@ -24,6 +24,9 @@ const nextConfig: NextConfig = {
       { source: "/notes/:path*", headers: media },
       { source: "/hero-background.mp4", headers: media },
       { source: "/pomoist-app-icon.png", headers: media },
+      { source: "/downloads/:path*", headers: [
+        { key: "Cache-Control", value: "public, max-age=86400" }
+      ] },
     ];
   },
 };

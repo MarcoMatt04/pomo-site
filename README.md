@@ -55,7 +55,54 @@ audio in `lib/streamui/audio/synth.ts`, driven by the UI in
 Each heavy section is wrapped in an error boundary (`SectionGuard` in
 `app/home/page.tsx`), so a WebGL context that fails costs one section, not the page.
 
-## Docker
+## The Download button
+
+The Download button in the top bar links to the installer as a **GitHub release
+asset** — not a file inside this site.
+
+It cannot be a repo file or a `public/` asset:
+
+- GitHub refuses any repo file over **100 MB**
+- Vercel caps static uploads at **100 MB** (Hobby)
+- GitHub release assets allow up to **2 GB**, cost nothing, and are served on a
+  fast CDN with the right `content-disposition`
+
+To publish a new version:
+
+```bash
+# in the app repo
+pnpm desktop:build
+# → src-tauri/target/release/bundle/nsis/Pomoist_<version>_x64-setup.exe
+
+# upload it (116 MB is fine for a release asset)
+gh release create v<version> \
+  path/to/Pomoist_<version>_x64-setup.exe \
+  --title "Pomoist <version>" --notes "What changed"
+```
+
+Then point `INSTALLER_URL` in `app/home/page.tsx` at
+`https://github.com/<owner>/pomo-site/releases/download/v<version>/Pomoist_<version>_x64-setup.exe`.
+
+`public/downloads/` still exists (git-ignored) only for the self-hosted Docker
+path below, where a local file is easier than a release.
+
+## Deploy on Vercel
+
+1. Push to GitHub — import the repo on Vercel.
+2. Set the env var **before the first build** (it is baked in, not read at
+   runtime): `NEXT_PUBLIC_SITE_URL` = the final domain, e.g.
+   `https://pomoist.app`. Without it, canonical URLs, Open Graph tags and
+   `sitemap.xml` fall back to `http://localhost:3000`.
+3. Deploy. No Vercel-specific config is needed — the Next.js build is detected
+   automatically.
+
+To check locally with the same value you will deploy with:
+
+```bash
+NEXT_PUBLIC_SITE_URL=https://your-domain pnpm build && pnpm start
+```
+
+## Docker (self-hosting alternative)
 
 ```bash
 docker compose build --build-arg NEXT_PUBLIC_SITE_URL=https://pomoist.app
