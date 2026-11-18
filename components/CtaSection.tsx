@@ -1,7 +1,7 @@
 import { WakeGlyph } from '@/components/ui/background-ascii-wake';
 
-// shortcut: static mockup of the Ko-fi widget button, wire it up when the page goes live
-const CONTACT_EMAIL = 'company@email.com';
+// The contact address used by this section and the footer.
+const CONTACT_EMAIL = 'mattei04@proton.me';
 
 export const CtaSection = () => (
   <section id="cta" className="relative overflow-hidden py-14 md:py-32">
@@ -28,32 +28,11 @@ export const CtaSection = () => (
           {CONTACT_EMAIL}
         </a>
 
-        <div className="mt-14 flex flex-col items-center gap-4">
-          <span className="text-sm text-white/40 max-w-xs">
-            Pomoist is free and stays that way. If it earns a place in your day:
-          </span>
-          <button
-            type="button"
-            className="inline-flex items-center gap-2 rounded-xl bg-[#29abe0] px-3 py-3 text-[15px] font-bold text-white"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              aria-hidden
-              className="size-[22px]"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={1.9}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M4 9h12v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V9Z" />
-              <path d="M16 10.5h1.5a2.25 2.25 0 0 1 0 4.5H16" />
-              <path d="M7.5 3.5c-.7.9-1 1.6-1 2.2 0 .7.4 1.2 1 1.8" />
-              <path d="M11.5 3.5c-.7.9-1 1.6-1 2.2 0 .7.4 1.2 1 1.8" />
-            </svg>
-            Support me on Ko-fi
-          </button>
-        </div>
+        {/* Restore the Ko-fi card here once the page exists:
+            "Pomoist is free and stays that way. If it earns a place in your day:"
+            + a blue #29abe0 button linking to the live Ko-fi page. It is hidden
+            for now because the page is not published — a button that opens
+            nothing is worse than no button. */}
       </div>
     </div>
   </section>

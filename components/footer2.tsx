@@ -4,7 +4,7 @@ import { ArrowUp } from 'lucide-react';
 
 import TextPressure from '@/components/TextPressure';
 
-const CONTACT_EMAIL = 'company@email.com';
+const CONTACT_EMAIL = 'mattei04@proton.me';
 
 const NAVIGATION = [
   { label: 'Sound Library', href: '#sound-library' },
@@ -17,10 +17,11 @@ const NAVIGATION = [
   { label: 'FAQ', href: '#faq' }
 ];
 
+// Ko-fi goes back in here once the page exists — it is not created yet, and a
+// link to a page nobody can open is worse than no link.
 const FOLLOW = [
   { label: 'Instagram', href: '#' },
-  { label: 'GitHub', href: '#' },
-  { label: 'Ko-fi', href: 'https://ko-fi.com/pomoist' }
+  { label: 'GitHub', href: '#' }
 ];
 
 const LEGAL = [
